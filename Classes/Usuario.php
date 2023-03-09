@@ -28,9 +28,7 @@ class Usuario {
 
         $sql = new Sql();
 
-        $resultSql = $sql->select("SELECT * FROM projeto.tb_usuarios WHERE id = :ID", array(
-           ":ID" => $id 
-        ));
+        $resultSql = $sql->select("SELECT * FROM projeto.tb_usuarios WHERE id = :ID", [":ID" => $id]);
 
         if(isset($resultSql[0])){
 
@@ -41,11 +39,36 @@ class Usuario {
         }
     }
 
-    public function getList(){
+    public static function getList(){
 
         $sql = new Sql();
 
         return $sql->select("SELECT * FROM projeto.tb_usuarios");
+    }
+
+    public static function search($user){
+
+        $sql = new Sql();
+
+        return $sql->select("SELECT * FROM projeto.tb_usuarios WHERE user LIKE :SEARCH", [':SEARCH'=>"%".$user."%"]);
+    }
+
+    public function login($user){
+        
+        $sql = new Sql();
+
+        $resultSql = $sql->select("SELECT * FROM projeto.tb_usuarios WHERE user = :USER", [":USER" => $user]);
+
+        if(isset($resultSql[0])){
+
+            $row = $resultSql[0];
+
+            $this->setIdusuario($row["id"]);
+            $this->setName($row["name"]);
+        }else{
+
+            throw new Exception("Login e/ou senha inválidos");
+        }
     }
 
     public function __toString(){

@@ -1,6 +1,7 @@
 <?php
 
 class Sql extends PDO {
+    
     private $conn;
 
     public function __construct(){
@@ -32,7 +33,7 @@ class Sql extends PDO {
         return $stmt;
     }
 
-    public function select($rawQuery, $params = array()){
+    public function select($rawQuery, $params = array()):array{
 
        $stmt = $this->consulta($rawQuery, $params);
 

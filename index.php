@@ -16,12 +16,13 @@ require_once("config.php");
 
 // $aluno->insert();
 
+// $usuario = new Usuario();
+// $usuario->loadById(3);
+// $usuario->update("teste2","teste123");
+
 $usuario = new Usuario();
-
 $usuario->loadById(3);
-
-$usuario->update("teste2","teste123");
-
+$usuario->delete();
 echo $usuario;
 
 ?>

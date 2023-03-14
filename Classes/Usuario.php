@@ -115,6 +115,19 @@ class Usuario {
               ":ID" => $this->getIdusuario()]);
     }
 
+    public function delete(){
+
+        $sql = new Sql();
+
+        $sql->consulta("DELETE FROM  projeto.tb_usuarios WHERE  id = :ID", [":ID" => $this->getIdusuario()]);
+
+        $this->setIdusuario(null);
+        $this->setName(null);
+        $this->setUser(null);
+        $this->setPassword(null);
+        $this->setDtCadastro(null);
+    }
+
     public function __construct($user = "", $password = ""){
 
         $this->setUser($user);

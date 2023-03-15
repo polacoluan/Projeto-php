@@ -20,9 +20,9 @@ require_once("config.php");
 // $usuario->loadById(3);
 // $usuario->update("teste2","teste123");
 
-$usuario = new Usuario();
-$usuario->loadById(3);
-$usuario->delete();
-echo $usuario;
+// $usuario = new Usuario();
+// $usuario->loadById(3);
+// $usuario->delete();
+// echo $usuario;
 
 ?>
